@@ -26,10 +26,11 @@ public class HPHandler : NetworkBehaviour
 
     public bool skipSettingStartValues = false;
 
-    
-
     [SerializeField]
     private Transform healthBar;
+
+    [SerializeField]
+    private RectTransform healthBarImage;
 
     //Other components
     HitboxRoot hitboxRoot;
@@ -195,5 +196,8 @@ public class HPHandler : NetworkBehaviour
     {
         healthBar.localScale = new Vector3((float)(((float)HP / (float)startingHP) * 1.5), 0.3f, 0.01f);
         healthBar.localPosition = new Vector3((1.5f - (float)(((float)HP / (float)startingHP) * 1.5)) / 2, 1.108f, 0f);
+
+        healthBarImage.sizeDelta = new Vector2(((float)HP / (float)startingHP) * 500, 50);
+        healthBarImage.localPosition = new Vector2(((((float)HP / (float)startingHP) * 500) / 2) - 950, -450);
     }
 }
