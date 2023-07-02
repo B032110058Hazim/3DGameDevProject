@@ -35,33 +35,57 @@ public class CharacterInputHandler : MonoBehaviour
         if (!characterMovementHandler.Object.HasInputAuthority)
             return;
 
-        //View input
-        viewInputVector.x = Input.GetAxis("Mouse X");
-        viewInputVector.y = Input.GetAxis("Mouse Y") * -1; //Invert the mouse look
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
 
-        //Move input
-        moveInputVector.x = Input.GetAxis("Horizontal");
-        moveInputVector.y = Input.GetAxis("Vertical");
+            //View input
+            viewInputVector.x = Input.GetAxis("Mouse X");
+            viewInputVector.y = Input.GetAxis("Mouse Y") * -1; //Invert the mouse look
 
-        //Jump
-        if (Input.GetButtonDown("Jump"))
-            isJumpButtonPressed = true;
+            //Move input
+            moveInputVector.x = Input.GetAxis("Horizontal");
+            moveInputVector.y = Input.GetAxis("Vertical");
 
-        //Fire
-        if (Input.GetButtonDown("Fire1"))
-            isFireButtonPressed = true;
+            //Jump
+            if (Input.GetButtonDown("Jump"))
+                isJumpButtonPressed = true;
 
-        //Fire
-        if (Input.GetButtonDown("Fire2"))
-            isRocketLauncherFireButtonPressed = true;
+            //Fire
+            if (Input.GetButtonDown("Fire1"))
+                isFireButtonPressed = true;
 
-        //Throw grenade
-        if (Input.GetKeyDown(KeyCode.G))
-            isGrenadeFireButtonPressed = true;
+            //Fire
+            if (Input.GetButtonDown("Fire2"))
+                isRocketLauncherFireButtonPressed = true;
+
+            //Throw grenade
+            if (Input.GetKeyDown(KeyCode.G))
+                isGrenadeFireButtonPressed = true;
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+
+            //View input
+            viewInputVector.x = 0;
+            viewInputVector.y = 0;
+
+            //Move input
+            moveInputVector.x = 0;
+            moveInputVector.y = 0;
+        }
 
         //Set view
         localCameraHandler.SetViewInputVector(viewInputVector);
-
     }
 
     public NetworkInputData GetNetworkInput()
