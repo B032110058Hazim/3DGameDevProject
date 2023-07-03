@@ -9,6 +9,7 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
     public TextMeshProUGUI playerNickNameTM;
     public static NetworkPlayer Local { get; set; }
     public Transform playerModel;
+    public Transform healthBarModel;
 
     [Networked(OnChanged = nameof(OnNickNameChanged))]
     public NetworkString<_16> nickName { get; set; }
@@ -43,6 +44,7 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
             //Sets the layer of the local players model
             Utils.SetRenderLayerInChildren(playerModel, LayerMask.NameToLayer("LocalPlayerModel"));
+            Utils.SetRenderLayerInChildren(healthBarModel, LayerMask.NameToLayer("LocalPlayerModel"));
 
             //Disable main camera
             if (Camera.main != null)
