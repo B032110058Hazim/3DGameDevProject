@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterInputHandler : MonoBehaviour
 {
@@ -10,13 +11,18 @@ public class CharacterInputHandler : MonoBehaviour
     bool isFireButtonPressed = false;
     bool isGrenadeFireButtonPressed = false;
     bool isRocketLauncherFireButtonPressed = false;
+    bool isBritishSoldier = true;
 
     //Other components
     LocalCameraHandler localCameraHandler;
     CharacterMovementHandler characterMovementHandler;
+    public Camera localCamera;
+    [SerializeField]
+    private Image image;
 
     private void Awake()
     {
+        localCamera = GetComponentInChildren<Camera>();
         localCameraHandler = GetComponentInChildren<LocalCameraHandler>();
         characterMovementHandler = GetComponent<CharacterMovementHandler>();
     }
@@ -26,8 +32,8 @@ public class CharacterInputHandler : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        image.enabled = false;
     }
-
 
     // Update is called once per frame
     void Update()
@@ -55,17 +61,37 @@ public class CharacterInputHandler : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
                 isJumpButtonPressed = true;
 
-            //Fire
-            if (Input.GetButtonDown("Fire1"))
-                isFireButtonPressed = true;
+            if (isBritishSoldier)
+            {
+                //Fire
+                if (Input.GetButtonDown("Fire1"))
+                    isFireButtonPressed = true;
 
-            //Fire
-            if (Input.GetButtonDown("Fire2"))
-                isRocketLauncherFireButtonPressed = true;
+                //Scope
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    if (localCamera.fieldOfView == 60)
+                    {
+                        localCamera.fieldOfView = 20;
+                        image.enabled = true;
+                    }
+                    else
+                    {
+                        localCamera.fieldOfView = 60;
+                        image.enabled = false;
+                    }
+                }
+            }
+            else if (!isBritishSoldier)
+            {
+                //Fire
+                if (Input.GetButtonDown("Fire1"))
+                    isRocketLauncherFireButtonPressed = true;
 
-            //Throw grenade
-            if (Input.GetKeyDown(KeyCode.G))
-                isGrenadeFireButtonPressed = true;
+                //Throw grenade
+                if (Input.GetButtonDown("Fire2"))
+                    isGrenadeFireButtonPressed = true;
+            }
         }
         else
         {
@@ -117,5 +143,17 @@ public class CharacterInputHandler : MonoBehaviour
         isRocketLauncherFireButtonPressed = false;
 
         return networkInputData;
+    }
+
+    public void SwapBritishSoldier()
+    {
+        isBritishSoldier = true;
+    }
+
+    public void SwapJapaneseSoldier()
+    {
+        localCamera.fieldOfView = 60;
+        image.enabled = false;
+        isBritishSoldier = false;
     }
 }
