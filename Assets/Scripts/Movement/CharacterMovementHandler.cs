@@ -10,6 +10,10 @@ public class CharacterMovementHandler : NetworkBehaviour
 
     bool isRespawnRequested = false;
 
+    public AudioSource source;
+    public AudioClip clip_walk;
+    public AudioClip clip_jump;
+
     //Other components
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
     HPHandler hpHandler;
@@ -69,21 +73,31 @@ public class CharacterMovementHandler : NetworkBehaviour
             //Jump
             if(networkInputData.isJumpPressed)
             {
-                networkCharacterControllerPrototypeCustom.Jump();
                 characterAnimator.SetBool("IsJumping", true);
+                networkCharacterControllerPrototypeCustom.Jump();
+                
+                source.PlayOneShot(clip_jump);
             }
 
             else
             {
-                characterAnimator.SetBool("IsJumping", false);
-                //characterAnimator.SetBool("IsMoving", false);
+                characterAnimator.SetBool("IsJumping", false);                
             }
 
+            //walk
             Vector2 walkVector = new Vector2(networkCharacterControllerPrototypeCustom.Velocity.x, networkCharacterControllerPrototypeCustom.Velocity.z);
             walkVector.Normalize();
-            if (walkVector != Vector2.zero)
+            //if (walkVector != Vector2.zero)
+            //{
+            //    characterAnimator.SetBool("IsMoving", true);
+            //    source.PlayOneShot(clip_walk);
+            //}
+
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             {
                 characterAnimator.SetBool("IsMoving", true);
+                source.clip = clip_walk;
+                source.Play();
             }
 
             else
