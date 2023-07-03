@@ -12,6 +12,6 @@ public class Diamond : MonoBehaviour
         {
             hpHandler.DiamondCollected();
             gameObject.SetActive(false);
-        }
+        }       
     }
 }
