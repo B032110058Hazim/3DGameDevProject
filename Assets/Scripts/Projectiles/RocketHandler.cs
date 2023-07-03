@@ -23,13 +23,13 @@ public class RocketHandler : NetworkBehaviour
 
     //Fired by info
     PlayerRef firedByPlayerRef;
-    string firedByPlayerName;
+    NetworkPlayer firedByPlayerName;
     NetworkObject firedByNetworkObject;
 
     //Other components
     NetworkObject networkObject;
 
-    public void Fire(PlayerRef firedByPlayerRef, NetworkObject firedByNetworkObject, string firedByPlayerName)
+    public void Fire(PlayerRef firedByPlayerRef, NetworkObject firedByNetworkObject, NetworkPlayer firedByPlayerName)
     {
         this.firedByPlayerRef = firedByPlayerRef;
         this.firedByPlayerName = firedByPlayerName;
