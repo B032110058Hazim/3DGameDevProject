@@ -87,15 +87,15 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
     public void PlayerLeft(PlayerRef player)
     {
-        //if (Object.HasStateAuthority)
-        //{
-        //    if (Runner.TryGetPlayerObject(player, out NetworkObject playerLeftNetworkObject))
-        //    {
-        //        if (playerLeftNetworkObject == Object)
-        //            Local.GetComponent<NetworkInGameMessages>().SendInGameRPCMessage(playerLeftNetworkObject.GetComponent<NetworkPlayer>().nickName.ToString(), "left");
-        //    }
-//
-        //}
+        if (Object.HasStateAuthority)
+        {
+            if (Runner.TryGetPlayerObject(player, out NetworkObject playerLeftNetworkObject))
+            {
+                if (playerLeftNetworkObject == Object)
+                    Local.GetComponent<NetworkInGameMessages>().SendInGameRPCMessage(playerLeftNetworkObject.GetComponent<NetworkPlayer>().nickName.ToString(), "left");
+            }
+
+        }
 
 
         if (player == Object.InputAuthority)
@@ -124,7 +124,7 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
         if (!isPublicJoinMessageSent)
         {
-            //networkInGameMessages.SendInGameRPCMessage(nickName, "joined");
+            networkInGameMessages.SendInGameRPCMessage(nickName, "joined");
 
             isPublicJoinMessageSent = true;
         }

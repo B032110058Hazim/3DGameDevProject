@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 246120406805321715}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1011,6 +1011,7 @@ GameObject:
   - component: {fileID: 2236272646455254436}
   - component: {fileID: 4985779429485557398}
   - component: {fileID: 613021797144884349}
+  - component: {fileID: 1395544000767594215}
   m_Layer: 0
   m_Name: NetworkPlayer PF
   m_TagString: Untagged
@@ -1274,6 +1275,18 @@ MonoBehaviour:
     _hash: -814817977
   StateHashes: 000000008a18fce4b9abd9d3a6cf4cd23524c590
   TriggerHashes: 00000000
+--- !u!114 &1395544000767594215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398370856537798957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d9ac355d4f8744aab7cdce676e5305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5276705138384389717
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,6 +2097,7 @@ GameObject:
   - component: {fileID: 8779816170998363934}
   - component: {fileID: 5359599652406585883}
   - component: {fileID: 8359443615249732276}
+  - component: {fileID: 5607331312308795798}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -2169,6 +2183,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5607331312308795798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8289887545779833421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411cb47c99ba3d54290ccda26a28bec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8591541965426778896
 GameObject:
   m_ObjectHideFlags: 0
