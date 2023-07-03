@@ -24,12 +24,6 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
         sessionListUIHandler = FindObjectOfType<SessionListUIHandler>(true);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     int GetPlayerToken(NetworkRunner runner, PlayerRef player)
     {
         if (runner.LocalPlayer == player)
