@@ -62,8 +62,7 @@ public class CharacterMovementHandler : NetworkBehaviour
             rotation.eulerAngles = new Vector3(0, rotation.eulerAngles.y, rotation.eulerAngles.z);
             transform.rotation = rotation;
 
-            //Move
-            
+            //Move        
             Vector3 moveDirection = transform.forward * networkInputData.movementInput.y + transform.right * networkInputData.movementInput.x;
             moveDirection.Normalize();
 
@@ -71,49 +70,62 @@ public class CharacterMovementHandler : NetworkBehaviour
             
 
             //Jump
-            if(networkInputData.isJumpPressed)
+            if (networkInputData.isJumpPressed)
             {
-                characterAnimator.SetBool("IsJumping", true);
                 networkCharacterControllerPrototypeCustom.Jump();
-                
+                characterAnimator.SetBool("IsJumping", true);
+
                 source.PlayOneShot(clip_jump);
             }
 
             else
             {
-                characterAnimator.SetBool("IsJumping", false);                
+                characterAnimator.SetBool("IsJumping", false);
             }
 
             //walk
             Vector2 walkVector = new Vector2(networkCharacterControllerPrototypeCustom.Velocity.x, networkCharacterControllerPrototypeCustom.Velocity.z);
-            walkVector.Normalize();
-            //if (walkVector != Vector2.zero)
-            //{
-            //    characterAnimator.SetBool("IsMoving", true);
-            //    source.PlayOneShot(clip_walk);
-            //}
+            float inputMagnitude = Mathf.Clamp01(walkVector.magnitude);
 
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            characterAnimator.SetFloat("WalkMagnitude", inputMagnitude);
+
+            //crouch
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                characterAnimator.SetBool("IsMoving", true);
-                source.clip = clip_walk;
-                source.Play();
+                characterAnimator.SetBool("IsCrouching", true);
+                characterAnimator.SetFloat("CrouchMagnitude", inputMagnitude);
             }
 
             else
             {
-                characterAnimator.SetBool("IsMoving", false);
+                characterAnimator.SetBool("IsCrouching", false);
             }
 
+            //walk sound
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            {
+                source.clip = clip_walk;
+                source.Play();
+            }
+
+            walkVector.Normalize();
+
+            //Aim
+            //if (Input.GetMouseButtonDown(1))
+            //{
+            //    characterAnimator.SetBool("IsAiming", true);
+
+            //    if (Input.GetMouseButtonDown(1))
+            //    {
+            //        characterAnimator.SetBool("IsAiming", false);
+            //    }
+            //}
+
+            
 
             //Check if we've fallen off the world.
             CheckFallRespawn();
-        }
-
-        
-
-
-
+        }      
     }
 
     void CheckFallRespawn()

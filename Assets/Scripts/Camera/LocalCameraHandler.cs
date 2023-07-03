@@ -41,8 +41,10 @@ public class LocalCameraHandler : MonoBehaviour
         //Move the camera to the position of the player
         localCamera.transform.position = cameraAnchorPoint.position;
 
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
             localCamera.transform.position = localCamera.transform.position - new Vector3(0, 0.5f, 0);
+        }
 
         //Calculate rotation
         cameraRotationX += viewInput.y * Time.deltaTime * networkCharacterControllerPrototypeCustom.viewUpDownRotationSpeed;

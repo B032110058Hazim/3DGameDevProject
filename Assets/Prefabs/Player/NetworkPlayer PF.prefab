@@ -1013,6 +1013,7 @@ GameObject:
   - component: {fileID: 613021797144884349}
   - component: {fileID: 1395544000767594215}
   - component: {fileID: 7611224994220280432}
+  - component: {fileID: 3784965338161338471}
   m_Layer: 0
   m_Name: NetworkPlayer PF
   m_TagString: Untagged
@@ -1277,7 +1278,7 @@ MonoBehaviour:
     _value: 0
     _inverse: 0
     _hash: -814817977
-  StateHashes: 00000000c0404dd32e2285a6688078b64b307b108b7cfd670f5f2b88
+  StateHashes: 000000008a18fce4b9abd9d3
   TriggerHashes: 00000000
 --- !u!114 &1395544000767594215
 MonoBehaviour:
@@ -1387,6 +1388,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3784965338161338471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398370856537798957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82b237b4bee9db48b7efb008c37f488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5276705138384389717
 GameObject:
   m_ObjectHideFlags: 0

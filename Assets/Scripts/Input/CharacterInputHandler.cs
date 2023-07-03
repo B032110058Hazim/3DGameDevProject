@@ -24,6 +24,7 @@ public class CharacterInputHandler : MonoBehaviour
     {
         localCamera = GetComponentInChildren<Camera>();
         localCameraHandler = GetComponentInChildren<LocalCameraHandler>();
+
         characterMovementHandler = GetComponent<CharacterMovementHandler>();
     }
 
@@ -59,7 +60,10 @@ public class CharacterInputHandler : MonoBehaviour
 
             //Jump
             if (Input.GetButtonDown("Jump"))
+            {
                 isJumpButtonPressed = true;
+            }
+               
 
             if (isBritishSoldier)
             {
