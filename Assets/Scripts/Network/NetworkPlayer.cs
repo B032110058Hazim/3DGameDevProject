@@ -62,7 +62,6 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
             RPC_SetNickName(GameManager.instance.playerNickName);
 
             Debug.Log("Spawned local player");
-            
         }
         else
         {

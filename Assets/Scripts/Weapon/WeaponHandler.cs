@@ -88,7 +88,7 @@ public class WeaponHandler : NetworkBehaviour
             Debug.Log($"{Time.time} {transform.name} hit hitbox {hitinfo.Hitbox.transform.root.name}");
 
             if (Object.HasStateAuthority)
-                hitinfo.Hitbox.transform.root.GetComponent<HPHandler>().OnTakeDamage(networkPlayer, 1);
+                hitinfo.Hitbox.transform.root.GetComponent<HPHandler>().OnTakeDamage(networkPlayer.nickName.ToString(), 1);
 
             isHitOtherPlayer = true;
 
@@ -113,7 +113,7 @@ public class WeaponHandler : NetworkBehaviour
         {
             Runner.Spawn(grenadePrefab, aimPoint.position + aimForwardVector * 1.5f, Quaternion.LookRotation(aimForwardVector), Object.InputAuthority, (runner, spawnedGrenade) =>
             {
-                spawnedGrenade.GetComponent<GrenadeHandler>().Throw(aimForwardVector * 15, Object.InputAuthority, networkPlayer);
+                spawnedGrenade.GetComponent<GrenadeHandler>().Throw(aimForwardVector * 15, Object.InputAuthority, networkPlayer.nickName.ToString());
             });
 
             //Start a new timer to avoid grenade spamming
@@ -128,7 +128,7 @@ public class WeaponHandler : NetworkBehaviour
         {
             Runner.Spawn(rocketPrefab, aimPoint.position + aimForwardVector * 1.5f, Quaternion.LookRotation(aimForwardVector), Object.InputAuthority, (runner, spawnedRocket) =>
             {
-                spawnedRocket.GetComponent<RocketHandler>().Fire(Object.InputAuthority, networkObject,  networkPlayer);
+                spawnedRocket.GetComponent<RocketHandler>().Fire(Object.InputAuthority, networkObject,  networkPlayer.nickName.ToString());
             });
 
             //Start a new timer to avoid grenade spamming

@@ -7,7 +7,6 @@ using TMPro;
 public class MainMenuUIHandler : MonoBehaviour
 {
     [Header("Panels")]
-    public GameObject playPanel;
     public GameObject playerDetailsPanel;
     public GameObject sessionBrowserPanel;
     public GameObject createSessionPanel;
@@ -22,24 +21,16 @@ public class MainMenuUIHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playPanel.SetActive(true);
+        if (PlayerPrefs.HasKey("PlayerNickname"))
+            playerNameInputField.text = PlayerPrefs.GetString("PlayerNickname");
     }
 
     void HideAllPanels()
     {
-        playPanel.SetActive(false);
         playerDetailsPanel.SetActive(false);
         sessionBrowserPanel.SetActive(false);
         statusPanel.SetActive(false);
         createSessionPanel.SetActive(false);
-    }
-
-    public void onStartGameClicked()
-    {
-        playPanel.SetActive(false);
-        playerDetailsPanel.SetActive(true);
-        if (PlayerPrefs.HasKey("PlayerNickname"))
-            playerNameInputField.text = PlayerPrefs.GetString("PlayerNickname");
     }
 
     public void OnFindGameClicked()

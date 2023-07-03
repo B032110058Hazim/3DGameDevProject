@@ -22,6 +22,7 @@ public class NetworkRunnerHandler : MonoBehaviour
         //If we already have a network runner in the scene then we should not create another one but rahter use the existing one
         if (networkRunnerInScene != null)
             networkRunner = networkRunnerInScene;
+
     }
 
     // Start is called before the first frame update

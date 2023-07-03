@@ -58,6 +58,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8439091692384082190, guid: 913e1b08620d21841b5a2c4a29553dd7, type: 3}
-  diamond: {fileID: 7920109887731164327, guid: a2a28a2fed9feda4495c410b7495e2f0, type: 3}
-  timeRemaining: 1000
-  timerIsRunning: 0

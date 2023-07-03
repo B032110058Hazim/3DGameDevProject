@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2631824431727841552}
   - component: {fileID: 841784183}
+  - component: {fileID: 841784182}
   - component: {fileID: 2933729790933149938}
-  - component: {fileID: -8990886887413967893}
   m_Layer: 0
   m_Name: Diamond
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 5926829895805432470}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &841784183
 BoxCollider:
@@ -43,22 +43,26 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7920109887731164327}
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4, z: 0.4}
   m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!114 &841784182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920109887731164327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418a5cccc8560c14b9090906d6b8f48a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &2933729790933149938
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -75,27 +79,12 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-8990886887413967893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7920109887731164327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 418a5cccc8560c14b9090906d6b8f48a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diamondSpawner: {fileID: 1188243385330535935, guid: 38cdd74e5659c1043ae143253c86505a, type: 3}
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5931743970028163184
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 2631824431727841552}
     m_Modifications:
     - target: {fileID: 1734514868268080, guid: 67d1cb3a2224d44519297205ad070b27, type: 3}
@@ -159,9 +148,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67d1cb3a2224d44519297205ad070b27, type: 3}
 --- !u!4 &5926829895805432470 stripped
 Transform:

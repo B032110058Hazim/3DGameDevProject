@@ -13,7 +13,7 @@ public class GrenadeHandler : NetworkBehaviour
 
     //Thrown by info
     PlayerRef thrownByPlayerRef;
-    NetworkPlayer thrownByPlayerName;
+    string thrownByPlayerName;
 
     //Timing
     TickTimer explodeTickTimer = TickTimer.None;
@@ -25,7 +25,7 @@ public class GrenadeHandler : NetworkBehaviour
     NetworkObject networkObject;
     NetworkRigidbody networkRigidbody;
 
-    public void Throw(Vector3 throwForce, PlayerRef thrownByPlayerRef, NetworkPlayer thrownByPlayerName)
+    public void Throw(Vector3 throwForce, PlayerRef thrownByPlayerRef, string thrownByPlayerName)
     {
         networkObject = GetComponent<NetworkObject>();
         networkRigidbody = GetComponent<NetworkRigidbody>();
