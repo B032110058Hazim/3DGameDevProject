@@ -10,8 +10,6 @@ public class CharacterMovementHandler : NetworkBehaviour
 
     bool isRespawnRequested = false;
 
-    float walkSpeed = 0;
-
     //Other components
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
     HPHandler hpHandler;
@@ -24,11 +22,14 @@ public class CharacterMovementHandler : NetworkBehaviour
         hpHandler = GetComponent<HPHandler>();
         networkInGameMessages = GetComponent<NetworkInGameMessages>();
         networkPlayer = GetComponent<NetworkPlayer>();
+
+        characterAnimator = GetComponentInChildren<Animator>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     public override void FixedUpdateNetwork()
@@ -58,26 +59,46 @@ public class CharacterMovementHandler : NetworkBehaviour
             transform.rotation = rotation;
 
             //Move
+            
             Vector3 moveDirection = transform.forward * networkInputData.movementInput.y + transform.right * networkInputData.movementInput.x;
             moveDirection.Normalize();
 
             networkCharacterControllerPrototypeCustom.Move(moveDirection);
+            
 
             //Jump
             if(networkInputData.isJumpPressed)
+            {
                 networkCharacterControllerPrototypeCustom.Jump();
+                characterAnimator.SetBool("IsJumping", true);
+            }
+
+            else
+            {
+                characterAnimator.SetBool("IsJumping", false);
+                //characterAnimator.SetBool("IsMoving", false);
+            }
 
             Vector2 walkVector = new Vector2(networkCharacterControllerPrototypeCustom.Velocity.x, networkCharacterControllerPrototypeCustom.Velocity.z);
             walkVector.Normalize();
+            if (walkVector != Vector2.zero)
+            {
+                characterAnimator.SetBool("IsMoving", true);
+            }
 
-            walkSpeed = Mathf.Lerp(walkSpeed, Mathf.Clamp01(walkVector.magnitude), Runner.DeltaTime * 5);
-
-            characterAnimator.SetFloat("walkSpeed", walkSpeed);
+            else
+            {
+                characterAnimator.SetBool("IsMoving", false);
+            }
 
 
             //Check if we've fallen off the world.
             CheckFallRespawn();
         }
+
+        
+
+
 
     }
 
