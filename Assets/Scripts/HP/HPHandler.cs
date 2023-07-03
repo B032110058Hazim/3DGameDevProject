@@ -192,6 +192,15 @@ public class HPHandler : NetworkBehaviour
         isDead = false;
     }
 
+    public void DiamondCollected()
+    {
+        //Ensure that we cannot flip the byte as it can't handle minus values.
+        if (HP + 2 > startingHP)
+            HP = startingHP;
+        else
+            HP += 2;
+    }
+
     void Update()
     {
         healthBar.localScale = new Vector3((float)(((float)HP / (float)startingHP) * 1.5), 0.3f, 0.01f);
