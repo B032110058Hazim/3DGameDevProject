@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LocalCameraHandler : MonoBehaviour
 {
@@ -18,9 +17,6 @@ public class LocalCameraHandler : MonoBehaviour
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
     public Camera localCamera;
 
-    [SerializeField]
-    private Image image;
-
     private void Awake()
     {
         localCamera = GetComponent<Camera>();
@@ -32,7 +28,6 @@ public class LocalCameraHandler : MonoBehaviour
     {
         cameraRotationX = GameManager.instance.cameraViewRotation.x;
         cameraRotationY = GameManager.instance.cameraViewRotation.y;
-        image.enabled = false;
     }
 
     void LateUpdate()
@@ -57,22 +52,6 @@ public class LocalCameraHandler : MonoBehaviour
 
         //Apply rotation
         localCamera.transform.rotation = Quaternion.Euler(cameraRotationX, cameraRotationY, 0);
-
-        //Scope
-        if (Input.GetButtonDown("Fire3"))
-        {
-            if (localCamera.fieldOfView == 60)
-            {
-                localCamera.fieldOfView = 30;
-                image.enabled = true;
-            }
-            else
-            {
-                localCamera.fieldOfView = 60;
-                image.enabled = false;
-            }
-        }
-
     }
     public void SetViewInputVector(Vector2 viewInput)
     {
