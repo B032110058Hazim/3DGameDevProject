@@ -14,6 +14,10 @@ public class CharacterInputHandler : MonoBehaviour
     bool isBritishSoldier = true;
 
     //Other components
+    [Header("Animation")]
+    public Animator characterAnimator;
+
+
     LocalCameraHandler localCameraHandler;
     CharacterMovementHandler characterMovementHandler;
     public Camera localCamera;
@@ -26,6 +30,8 @@ public class CharacterInputHandler : MonoBehaviour
         localCameraHandler = GetComponentInChildren<LocalCameraHandler>();
 
         characterMovementHandler = GetComponent<CharacterMovementHandler>();
+
+        characterAnimator = GetComponentInChildren<Animator>();
     }
 
     // Start is called before the first frame update
@@ -78,11 +84,13 @@ public class CharacterInputHandler : MonoBehaviour
                     {
                         localCamera.fieldOfView = 20;
                         image.enabled = true;
+                        characterAnimator.SetBool("IsAiming", true);
                     }
                     else
                     {
                         localCamera.fieldOfView = 60;
                         image.enabled = false;
+                        characterAnimator.SetBool("IsAiming", false);
                     }
                 }
             }
