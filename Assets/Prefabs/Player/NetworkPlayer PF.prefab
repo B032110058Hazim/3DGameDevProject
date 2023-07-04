@@ -1175,6 +1175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841b71c039f81374fa3f1817941fb551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterAnimator: {fileID: 0}
+  source: {fileID: 7611224994220280432}
+  clip_aim: {fileID: 8300000, guid: be5e9fb4dabd1af42b779191e792fa46, type: 3}
+  clip_shoot: {fileID: 8300000, guid: 502fd0d4c04fc59458be161168f05942, type: 3}
   localCamera: {fileID: 7230795862830266498}
   image: {fileID: 5207977355704428971}
 --- !u!114 &4163659810031255665
@@ -1278,7 +1282,7 @@ MonoBehaviour:
     _value: 0
     _inverse: 0
     _hash: -814817977
-  StateHashes: 000000008a18fce4b9abd9d3
+  StateHashes: 00000000e1be75a36c8c0a8d3e39c8ed4335f726688078b64b307b1095f5a874ed4ba015
   TriggerHashes: 00000000
 --- !u!114 &1395544000767594215
 MonoBehaviour:

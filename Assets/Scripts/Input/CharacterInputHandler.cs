@@ -14,15 +14,17 @@ public class CharacterInputHandler : MonoBehaviour
     bool isBritishSoldier = true;
 
     //Other components
-    [Header("Animation")]
-    public Animator characterAnimator;
-
-
+    Animator characterAnimator;
     LocalCameraHandler localCameraHandler;
     CharacterMovementHandler characterMovementHandler;
     public Camera localCamera;
     [SerializeField]
     private Image image;
+
+    [Header("Sounds")]
+    public AudioSource source;
+    public AudioClip clip_aim;
+    public AudioClip clip_shoot;
 
     private void Awake()
     {
@@ -75,7 +77,11 @@ public class CharacterInputHandler : MonoBehaviour
             {
                 //Fire
                 if (Input.GetButtonDown("Fire1"))
+                {
                     isFireButtonPressed = true;
+                    source.PlayOneShot(clip_shoot);
+                }
+                    
 
                 //Scope
                 if (Input.GetButtonDown("Fire2"))
@@ -85,15 +91,18 @@ public class CharacterInputHandler : MonoBehaviour
                         localCamera.fieldOfView = 20;
                         image.enabled = true;
                         characterAnimator.SetBool("IsAiming", true);
+                        source.PlayOneShot(clip_aim);
                     }
                     else
                     {
                         localCamera.fieldOfView = 60;
                         image.enabled = false;
                         characterAnimator.SetBool("IsAiming", false);
+                        source.PlayOneShot(clip_aim);
                     }
                 }
             }
+
             else if (!isBritishSoldier)
             {
                 //Fire

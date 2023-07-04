@@ -4,21 +4,22 @@ using UnityEngine;
 using Fusion;
 
 public class CharacterMovementHandler : NetworkBehaviour
-{
-    [Header("Animation")]
-    public Animator characterAnimator;
-
+{    
     bool isRespawnRequested = false;
-
-    public AudioSource source;
-    public AudioClip clip_walk;
-    public AudioClip clip_jump;
 
     //Other components
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
     HPHandler hpHandler;
     NetworkInGameMessages networkInGameMessages;
     NetworkPlayer networkPlayer;
+
+    [Header("Animation")]
+    public Animator characterAnimator;
+
+    [Header("Sounds")]
+    public AudioSource source;
+    public AudioClip clip_walk;
+    public AudioClip clip_jump;
 
     private void Awake()
     {
@@ -67,7 +68,6 @@ public class CharacterMovementHandler : NetworkBehaviour
             moveDirection.Normalize();
 
             networkCharacterControllerPrototypeCustom.Move(moveDirection);
-            
 
             //Jump
             if (networkInputData.isJumpPressed)
@@ -89,6 +89,16 @@ public class CharacterMovementHandler : NetworkBehaviour
 
             characterAnimator.SetFloat("WalkMagnitude", inputMagnitude);
 
+            //walk sound
+            if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+            {
+                source.PlayOneShot(clip_walk);
+
+                //source.clip = clip_walk;
+                //source.loop = true;
+                //source.Play();
+            }
+
             //crouch
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -99,33 +109,13 @@ public class CharacterMovementHandler : NetworkBehaviour
             else
             {
                 characterAnimator.SetBool("IsCrouching", false);
-            }
-
-            //walk sound
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-            {
-                source.clip = clip_walk;
-                source.Play();
-            }
+            }           
 
             walkVector.Normalize();
 
-            //Aim
-            //if (Input.GetMouseButtonDown(1))
-            //{
-            //    characterAnimator.SetBool("IsAiming", true);
-
-            //    if (Input.GetMouseButtonDown(1))
-            //    {
-            //        characterAnimator.SetBool("IsAiming", false);
-            //    }
-            //}
-
-            
-
             //Check if we've fallen off the world.
             CheckFallRespawn();
-        }      
+        }
     }
 
     void CheckFallRespawn()
@@ -140,7 +130,6 @@ public class CharacterMovementHandler : NetworkBehaviour
 
                 Respawn();
             }
-
         }
     }
 
