@@ -19,9 +19,18 @@ public class MainMenuUIHandler : MonoBehaviour
     [Header("New game session")]
     public TMP_InputField sessionNameInputField;
 
+    [Header("Sounds")]
+    public AudioSource source;
+    public AudioClip click;
+    public AudioClip bgm;
+
     // Start is called before the first frame update
     void Start()
     {
+        //bgm sounds
+        source.clip = bgm;
+        source.Play();
+
         if (PlayerPrefs.HasKey("PlayerNickname"))
             playerNameInputField.text = PlayerPrefs.GetString("PlayerNickname");
     }
@@ -37,6 +46,8 @@ public class MainMenuUIHandler : MonoBehaviour
 
     public void PlayClicked()
     {
+        source.PlayOneShot(click);
+
         HideAllPanels();
 
         playerDetailsPanel.SetActive(true);
@@ -44,6 +55,8 @@ public class MainMenuUIHandler : MonoBehaviour
 
     public void OnFindGameClicked()
     {
+        source.PlayOneShot(click);
+
         PlayerPrefs.SetString("PlayerNickname", playerNameInputField.text);
         PlayerPrefs.Save();
 
@@ -61,6 +74,8 @@ public class MainMenuUIHandler : MonoBehaviour
 
     public void OnCreateNewGameClicked()
     {
+        source.PlayOneShot(click);
+
         HideAllPanels();
 
         createSessionPanel.SetActive(true);
@@ -68,6 +83,8 @@ public class MainMenuUIHandler : MonoBehaviour
 
     public void OnStartNewSessionClicked()
     {
+        source.PlayOneShot(click);
+
         NetworkRunnerHandler networkRunnerHandler = FindObjectOfType<NetworkRunnerHandler>();
 
         networkRunnerHandler.CreateGame(sessionNameInputField.text, "World1");
@@ -79,8 +96,12 @@ public class MainMenuUIHandler : MonoBehaviour
 
     public void OnJoiningServer()
     {
+        source.PlayOneShot(click);
+
         HideAllPanels();
 
         statusPanel.gameObject.SetActive(true);
+
+        source.Stop();
     }
 }
