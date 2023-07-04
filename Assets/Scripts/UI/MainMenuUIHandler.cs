@@ -7,6 +7,7 @@ using TMPro;
 public class MainMenuUIHandler : MonoBehaviour
 {
     [Header("Panels")]
+    public GameObject playPanel;
     public GameObject playerDetailsPanel;
     public GameObject sessionBrowserPanel;
     public GameObject createSessionPanel;
@@ -27,10 +28,18 @@ public class MainMenuUIHandler : MonoBehaviour
 
     void HideAllPanels()
     {
+        playPanel.SetActive(false);
         playerDetailsPanel.SetActive(false);
         sessionBrowserPanel.SetActive(false);
         statusPanel.SetActive(false);
         createSessionPanel.SetActive(false);
+    }
+
+    public void PlayClicked()
+    {
+        HideAllPanels();
+
+        playerDetailsPanel.SetActive(true);
     }
 
     public void OnFindGameClicked()
