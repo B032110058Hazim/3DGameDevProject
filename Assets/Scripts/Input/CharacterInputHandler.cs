@@ -46,7 +46,7 @@ public class CharacterInputHandler : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         image.enabled = false;
-        JapaneseSoldier.SetActive(false);
+        JapaneseSoldier.transform.position = new Vector3(0, 1000, 0);
     }
 
     // Update is called once per frame
@@ -175,8 +175,8 @@ public class CharacterInputHandler : MonoBehaviour
     {
         isBritishSoldier = true;
         
-        BritishSoldier.SetActive(true);
-        JapaneseSoldier.SetActive(false);
+        BritishSoldier.transform.position = new Vector3(0, 0, 0);
+        JapaneseSoldier.transform.position = new Vector3(0, 1000, 0);
     }
 
     public void SwapJapaneseSoldier()
@@ -186,7 +186,7 @@ public class CharacterInputHandler : MonoBehaviour
 
         isBritishSoldier = false;
 
-        BritishSoldier.SetActive(false);
-        JapaneseSoldier.SetActive(true);
+        JapaneseSoldier.transform.position = new Vector3(0, 1000, 0);
+        JapaneseSoldier.transform.position = new Vector3(0, 0, 0);
     }
 }
