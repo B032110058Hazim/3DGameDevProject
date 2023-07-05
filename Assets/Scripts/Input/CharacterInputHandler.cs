@@ -186,7 +186,7 @@ public class CharacterInputHandler : MonoBehaviour
 
         isBritishSoldier = false;
 
-        JapaneseSoldier.transform.position = new Vector3(0, 1000, 0);
+        BritishSoldier.transform.position = new Vector3(0, 1000, 0);
         JapaneseSoldier.transform.position = new Vector3(0, 0, 0);
     }
 }
