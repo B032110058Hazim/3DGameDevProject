@@ -709,6 +709,8 @@ MonoBehaviour:
   source: {fileID: 7611224994220280432}
   clip_aim: {fileID: 8300000, guid: be5e9fb4dabd1af42b779191e792fa46, type: 3}
   clip_shoot: {fileID: 8300000, guid: 502fd0d4c04fc59458be161168f05942, type: 3}
+  clip_bazooka: {fileID: 8300000, guid: 03de7e400f950d04889efed38d0355c6, type: 3}
+  clip_grenade: {fileID: 8300000, guid: 6707aca19d9736745b4dfe46552826b5, type: 3}
 --- !u!114 &4163659810031255665
 MonoBehaviour:
   m_ObjectHideFlags: 0

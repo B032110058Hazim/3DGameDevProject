@@ -29,6 +29,8 @@ public class CharacterInputHandler : MonoBehaviour
     public AudioSource source;
     public AudioClip clip_aim;
     public AudioClip clip_shoot;
+    public AudioClip clip_bazooka;
+    public AudioClip clip_grenade;
 
     private void Awake()
     {
@@ -112,11 +114,21 @@ public class CharacterInputHandler : MonoBehaviour
             {
                 //Fire
                 if (Input.GetButtonDown("Fire1"))
+                {
                     isRocketLauncherFireButtonPressed = true;
+
+                    source.PlayOneShot(clip_bazooka);
+                }
+                    
 
                 //Throw grenade
                 if (Input.GetButtonDown("Fire2"))
+                {
                     isGrenadeFireButtonPressed = true;
+
+                    source.PlayOneShot(clip_grenade);
+                }
+                    
             }
         }
         else
