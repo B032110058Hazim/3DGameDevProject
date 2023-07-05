@@ -13,7 +13,6 @@ public class Score : MonoBehaviour
         if(score != lastScore)
         {
             lastScore++;
-            Debug.Log($"Score: {score}");
         }
     }
 }

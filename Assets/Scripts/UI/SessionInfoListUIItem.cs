@@ -13,7 +13,7 @@ public class SessionInfoListUIItem : MonoBehaviour
     public Button joinButton;
 
     SessionInfo sessionInfo;
-
+    
     //Events
     public event Action<SessionInfo> OnJoinSession;
 
@@ -31,6 +31,7 @@ public class SessionInfoListUIItem : MonoBehaviour
 
         joinButton.gameObject.SetActive(isJoinButtonActive);
     }
+
 
     public void OnClick()
     {

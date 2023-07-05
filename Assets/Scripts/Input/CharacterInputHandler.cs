@@ -20,6 +20,10 @@ public class CharacterInputHandler : MonoBehaviour
     public Camera localCamera;
     [SerializeField]
     private Image image;
+    [SerializeField]
+    private GameObject BritishSoldier;
+    [SerializeField]
+    private GameObject JapaneseSoldier;
 
     [Header("Sounds")]
     public AudioSource source;
@@ -42,6 +46,7 @@ public class CharacterInputHandler : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         image.enabled = false;
+        JapaneseSoldier.SetActive(false);
     }
 
     // Update is called once per frame
@@ -169,12 +174,19 @@ public class CharacterInputHandler : MonoBehaviour
     public void SwapBritishSoldier()
     {
         isBritishSoldier = true;
+        
+        BritishSoldier.SetActive(true);
+        JapaneseSoldier.SetActive(false);
     }
 
     public void SwapJapaneseSoldier()
     {
         localCamera.fieldOfView = 60;
         image.enabled = false;
+
         isBritishSoldier = false;
+
+        BritishSoldier.SetActive(false);
+        JapaneseSoldier.SetActive(true);
     }
 }
