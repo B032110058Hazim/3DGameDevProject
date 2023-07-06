@@ -49,4 +49,28 @@ public class WinLoseUI : MonoBehaviour
 
         Application.Quit();
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if(winPanel.activeSelf == false)
+            {
+                winPanel.SetActive(true);
+                losePanel.SetActive(false);
+            }
+            else if (winPanel.activeSelf == true)
+                winPanel.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if(losePanel.activeSelf == false)
+            {
+                winPanel.SetActive(false);
+                losePanel.SetActive(true);
+            }
+            else if (losePanel.activeSelf == true)
+                losePanel.SetActive(false);
+        }
+    }
 }
