@@ -48,7 +48,6 @@ public class CharacterInputHandler : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         image.enabled = false;
-        JapaneseSoldier.transform.position = new Vector3(0, 1000, 0);
     }
 
     // Update is called once per frame

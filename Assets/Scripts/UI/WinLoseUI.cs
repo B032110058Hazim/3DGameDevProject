@@ -47,7 +47,7 @@ public class WinLoseUI : MonoBehaviour
 
         HideAllPanels();
 
-        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
     void Update()

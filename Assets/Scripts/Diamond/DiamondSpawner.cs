@@ -17,7 +17,7 @@ public class DiamondSpawner : MonoBehaviour
 
     public void SpawnObject()
     {
-        Vector3 randomSpawnPosition = new Vector3(Random.Range(-50, 50), 7, (Random.Range(0, 20)));
+        Vector3 randomSpawnPosition = new Vector3(Random.Range(-50, 50), 20, (Random.Range(0, 20)));
         Instantiate(diamond, randomSpawnPosition, Quaternion.identity);
 
         if (stopSpawning)
