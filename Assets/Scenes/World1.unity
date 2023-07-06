@@ -1052,6 +1052,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1821937639267323818, guid: a23d8fff460e98941843233322438dcc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821937639592188096, guid: a23d8fff460e98941843233322438dcc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821937639592188102, guid: a23d8fff460e98941843233322438dcc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1976043555}
+    - target: {fileID: 1821937639592188102, guid: a23d8fff460e98941843233322438dcc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PAClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821937639592188102, guid: a23d8fff460e98941843233322438dcc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WinLoseUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821937639709139115, guid: a23d8fff460e98941843233322438dcc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1821937639753700550, guid: a23d8fff460e98941843233322438dcc, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1139,6 +1163,22 @@ PrefabInstance:
     - target: {fileID: 1821937639753700568, guid: a23d8fff460e98941843233322438dcc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821937640251912442, guid: a23d8fff460e98941843233322438dcc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1976043555}
+    - target: {fileID: 1821937640251912442, guid: a23d8fff460e98941843233322438dcc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821937640251912442, guid: a23d8fff460e98941843233322438dcc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WinLoseUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821937640251912443, guid: a23d8fff460e98941843233322438dcc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a23d8fff460e98941843233322438dcc, type: 3}
@@ -2463,6 +2503,17 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &1976043555 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1821937639753700549, guid: a23d8fff460e98941843233322438dcc, type: 3}
+  m_PrefabInstance: {fileID: 955213292}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcc6d027737dd5429578abafc2a9b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1707361135077909395
 PrefabInstance:
   m_ObjectHideFlags: 0
