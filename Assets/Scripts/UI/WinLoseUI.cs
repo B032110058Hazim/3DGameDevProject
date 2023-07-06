@@ -54,23 +54,39 @@ public class WinLoseUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            if(winPanel.activeSelf == false)
+            //bgm sounds
+            source.clip = bgm;
+            source.Play();
+
+            if (winPanel.activeSelf == false)
             {
                 winPanel.SetActive(true);
                 losePanel.SetActive(false);
             }
             else if (winPanel.activeSelf == true)
+            {
                 winPanel.SetActive(false);
+                source.Stop();
+            }
+                
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
-            if(losePanel.activeSelf == false)
+            //bgm sounds
+            source.clip = bgm;
+            source.Play();
+
+            if (losePanel.activeSelf == false)
             {
                 winPanel.SetActive(false);
                 losePanel.SetActive(true);
             }
             else if (losePanel.activeSelf == true)
+            {
                 losePanel.SetActive(false);
+                source.Stop();
+            }
+                
         }
     }
 }
