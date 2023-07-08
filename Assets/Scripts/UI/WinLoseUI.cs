@@ -15,6 +15,12 @@ public class WinLoseUI : MonoBehaviour
     public AudioClip click;
     public AudioClip bgm;
 
+    [SerializeField]
+    private TextMeshProUGUI scoreText;
+
+    [SerializeField]
+    private TextMeshProUGUI scoreText2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +58,9 @@ public class WinLoseUI : MonoBehaviour
 
     void Update()
     {
+        scoreText.text = Score.score.ToString();
+        scoreText2.text = Score.score.ToString();
+
         if (Input.GetKeyDown(KeyCode.M))
         {
             //bgm sounds
